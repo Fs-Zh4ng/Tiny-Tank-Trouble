@@ -1,0 +1,110 @@
+[gd_scene load_steps=9 format=3 uid="uid://d2edocxnutjdh"]
+
+[ext_resource type="Script" uid="uid://dnku7efmkq6no" path="res://Scripts/tank_select.gd" id="1_r503u"]
+[ext_resource type="Texture2D" uid="uid://d2ic4s8fsiutx" path="res://Sprites/rouge_tank.png" id="2_q336q"]
+[ext_resource type="Texture2D" uid="uid://dfcg7r3wi8xct" path="res://Sprites/red_tank.png" id="2_r503u"]
+[ext_resource type="Texture2D" uid="uid://hiqd66ndcym6" path="res://Sprites/blue_tank.png" id="3_oknvd"]
+[ext_resource type="Texture2D" uid="uid://c8vuvfg1iv7fs" path="res://Sprites/dark_tank.png" id="4_rx6av"]
+[ext_resource type="Texture2D" uid="uid://ypguui0a58gl" path="res://Sprites/green_tank.png" id="4_yacct"]
+[ext_resource type="Texture2D" uid="uid://b0sih4wrlxk7c" path="res://Sprites/sand_tank.png" id="5_i88r7"]
+[ext_resource type="Texture2D" uid="uid://dvtyvew6rll8r" path="res://Sprites/big_tank.png" id="8_kdjcy"]
+
+[node name="TankSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_r503u")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 447.0
+offset_top = 145.0
+offset_right = 684.0
+offset_bottom = 196.0
+theme_override_font_sizes/font_size = 37
+text = "Select A Tank"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = 148.0
+offset_top = 261.0
+offset_right = 1024.0
+offset_bottom = 583.0
+theme_override_constants/separation = 36
+
+[node name="Tank1" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="RedButton" type="Button" parent="HBoxContainer/Tank1"]
+layout_mode = 2
+text = "Select"
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Tank1"]
+layout_mode = 2
+texture = ExtResource("2_q336q")
+
+[node name="Tank2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="BlueButton" type="Button" parent="HBoxContainer/Tank2"]
+layout_mode = 2
+text = "Select"
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Tank2"]
+layout_mode = 2
+texture = ExtResource("3_oknvd")
+
+[node name="Tank3" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="GreenButton" type="Button" parent="HBoxContainer/Tank3"]
+layout_mode = 2
+text = "Select"
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Tank3"]
+layout_mode = 2
+texture = ExtResource("4_yacct")
+
+[node name="Tank4" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="GreenButton" type="Button" parent="HBoxContainer/Tank4"]
+layout_mode = 2
+text = "Select"
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Tank4"]
+layout_mode = 2
+texture = ExtResource("5_i88r7")
+
+[node name="Tank5" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="GreenButton" type="Button" parent="HBoxContainer/Tank5"]
+layout_mode = 2
+text = "Select"
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Tank5"]
+layout_mode = 2
+texture = ExtResource("2_r503u")
+
+[node name="Tank6" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="GreenButton" type="Button" parent="HBoxContainer/Tank6"]
+layout_mode = 2
+text = "Select"
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Tank6"]
+layout_mode = 2
+texture = ExtResource("4_rx6av")
+
+[node name="Tank7" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="GreenButton" type="Button" parent="HBoxContainer/Tank7"]
+layout_mode = 2
+text = "Select"
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Tank7"]
+layout_mode = 2
+texture = ExtResource("8_kdjcy")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(570, 321)

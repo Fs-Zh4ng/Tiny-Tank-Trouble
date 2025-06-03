@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://bty7redukx820"]
+
+[ext_resource type="Script" uid="uid://du2da3ej6le5n" path="res://Scripts/game.gd" id="1_iukft"]
+[ext_resource type="Texture2D" uid="uid://b2ncm143ardoj" path="res://assets/PNG/Retina/barrelBlack_side.png" id="2_gl6un"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_iukft"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gl6un"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_iukft"]
+normal = Vector2(0, 1)
+distance = -18.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_j5yw3"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kldst"]
+normal = Vector2(-1, 0)
+distance = -0.820173
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j5yw3"]
+size = Vector2(36.7572, 52.216)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_iukft")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1159, 644)
+zoom = Vector2(0.5, 0.5)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(1316, 1287)
+scale = Vector2(3, 3)
+physics_material_override = SubResource("PhysicsMaterial_iukft")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-34, 1.33333)
+shape = SubResource("WorldBoundaryShape2D_gl6un")
+one_way_collision_margin = 1.2
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(490, 15)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("WorldBoundaryShape2D_iukft")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(9, 13)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(3, 274)
+shape = SubResource("WorldBoundaryShape2D_j5yw3")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+position = Vector2(1155, 442)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+position = Vector2(1155, 174)
+shape = SubResource("WorldBoundaryShape2D_kldst")
+
+[node name="Test" type="CharacterBody2D" parent="."]
+position = Vector2(199, 210)
+scale = Vector2(5.27788, 5.30489)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Test"]
+position = Vector2(-0.18947, -0.377007)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_j5yw3")
+
+[node name="Sprite2D" type="Sprite2D" parent="Test"]
+texture = ExtResource("2_gl6un")

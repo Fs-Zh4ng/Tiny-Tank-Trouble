@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://coe3eayehqebl"]
+
+[ext_resource type="Script" uid="uid://bsogj2t423v23" path="res://Scripts/heavy_shot.gd" id="1_pry1c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xjght"]
+size = Vector2(25, 35)
+
+[node name="heavy" type="Area2D"]
+script = ExtResource("1_pry1c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xjght")
+debug_color = Color(0.897799, 0.262209, 0.453859, 0.42)

@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://bmg1e1fwg2exo"]
+
+[ext_resource type="Script" uid="uid://cnxguce57ycy4" path="res://Scripts/heavy_effect.gd" id="1_o0j10"]
+[ext_resource type="Texture2D" uid="uid://bycqat10t83g" path="res://assets/PNG/Retina/explosion2.png" id="2_55imu"]
+[ext_resource type="Texture2D" uid="uid://bks07acce15ob" path="res://assets/PNG/Retina/explosion3.png" id="3_h1wcj"]
+[ext_resource type="Texture2D" uid="uid://dmng6hrabsb1i" path="res://assets/PNG/Retina/explosion4.png" id="4_44s3f"]
+[ext_resource type="Texture2D" uid="uid://goqprsgab5g7" path="res://assets/PNG/Retina/explosion5.png" id="5_25xeb"]
+[ext_resource type="Texture2D" uid="uid://d1uvm6ob1rale" path="res://assets/PNG/Retina/explosionSmoke5.png" id="6_d1qn0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3300m"]
+animations = [{
+"frames": [{
+"duration": 2.5,
+"texture": ExtResource("2_55imu")
+}, {
+"duration": 2.5,
+"texture": ExtResource("3_h1wcj")
+}, {
+"duration": 2.5,
+"texture": ExtResource("4_44s3f")
+}, {
+"duration": 2.5,
+"texture": ExtResource("5_25xeb")
+}, {
+"duration": 2.5,
+"texture": ExtResource("6_d1qn0")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 10.0
+}]
+
+[node name="HeavyEffect" type="Node2D"]
+script = ExtResource("1_o0j10")
+
+[node name="Explosion" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.1725, 1.1398)
+sprite_frames = SubResource("SpriteFrames_3300m")
+animation = &"explode"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
