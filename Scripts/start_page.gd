@@ -10,6 +10,9 @@ const GAME_SCENE = preload("res://Scenes/Lobby.tscn")
 var host_pass = ""
 var verified_peers = []
 
+func _ready():
+	if OS.has_feature("dedicated server"):
+		on_host_pressed()
 
 func on_host_pressed():
 	var addresses = IP.get_local_addresses()

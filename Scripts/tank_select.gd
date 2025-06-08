@@ -62,7 +62,7 @@ func _receive_tank_selection(peer_id: int, data: Dictionary):
 	print("Received from", peer_id, data)
 	selected_tanks[peer_id] = data
 	var total_players = multiplayer.get_peers().size() + 1  # +1 for host
-	print(total_players)
+	print("tot", total_players)
 	print(selected_tanks)
 	if selected_tanks.size() == total_players:
 		start_multiplayer_game()

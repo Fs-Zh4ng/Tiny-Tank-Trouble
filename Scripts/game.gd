@@ -16,13 +16,62 @@ var heavyType : String = ""
 var can_h := true
 var shot2Time := 0.0
 var done := false
+var timer := 0.0
+var time := 0.0
 
-		
+@onready var lava = $Lava
+@onready var water = $Water
+var terrains = ["lava", "water"]
+var terrain = ""
+
 func _process(delta):
 
 	if get_multiplayer_authority() != multiplayer.get_unique_id():
 		return
-
+	timer += delta
+	time += delta
+	if time >= 30:
+		if multiplayer.is_server():
+			var num = randi_range(0, 1)
+			GameManager.terrNum = num
+			if num == 0:
+				lava.visible = true
+				water.enabled = false
+			else:
+				water.enabled = true
+			send_terr.rpc(num)
+		time = 0.0
+	
+	if terrain == "water":
+		water.enabled = true
+		var map_pos = water.local_to_map(tank.global_position)
+		var cell_id = water.get_cell_source_id(map_pos)
+		if cell_id == 3:
+			tank.tank_speed = speed + 200
+		else:
+			tank.tank_speed = speed
+			
+		if cell_id == 4:
+			tank.cur_health = 0
+		
+		if cell_id == 10:
+			tank.tank_speed = speed - 125
+		else:
+			tank.tank_speed = speed
+	
+	if terrain == "lava":
+		lava.visible = true
+		water.enabled = false
+		var map_pos = lava.local_to_map(tank.global_position)
+		var cell_id = lava.get_cell_source_id(map_pos)
+		if cell_id == 3:
+			if timer >= 0.5:
+				print("ON LAVA")
+				tank.cur_health -= 1
+				timer = 0.0
+		else:
+			timer = 0.5
+	
 	if Input.is_action_pressed("shoot") and can_shoot:
 		spawn_bullet.rpc(selected_color, tank.rotation, tank.global_position, multiplayer.get_unique_id())
 		can_shoot = false
@@ -43,6 +92,7 @@ func _process(delta):
 		if shot2Time >= interval:
 			can_h = true
 	
+	
 	if tank.cur_health <= 0:
 		$Label.visible = true
 		$Label2.visible = true
@@ -62,18 +112,23 @@ func _process(delta):
 
 func disconnected(id):
 	get_tree().change_scene_to_file("res://Scenes/StartPage.tscn")
+	GameManager.players.clear()
 	queue_free()
 
 func return_home():
 	if multiplayer.is_server():
 		for peer in multiplayer.get_peers():
 			multiplayer.multiplayer_peer.disconnect_peer(peer)
-		multiplayer.multiplayer_peer.close()
+		multiplayer.multiplayer_peer.disconnect_peer(1)
 		get_tree().change_scene_to_file("res://Scenes/StartPage.tscn")
+		GameManager.players.clear()
+		print(GameManager.players.size())
 		queue_free()
 	else:
-		multiplayer.multiplayer_peer.close()
+		multiplayer.multiplayer_peer.disconnect_peer(multiplayer.get_unique_id())
 		get_tree().change_scene_to_file("res://Scenes/StartPage.tscn")
+		GameManager.players.clear()
+		print(GameManager.players.size())
 		queue_free()
 
 @rpc("any_peer", "call_local")
@@ -119,7 +174,30 @@ func set_tank(color: String, sp: int, sz: int, hp: int, pw: int, intv: int, rot:
 	rotate = rot
 	heavyType = heavy
 
+@rpc("any_peer", "call_local")
+func send_terr(num):
+	print("Receiving terr: ",num)
+	GameManager.terrNum = num
+	terrain = terrains[num]
+	print("Terrain is now:", terrain)
+	if num == 0:
+		lava.visible = true
+		water.enabled = false
+	else:
+		water.enabled = true
+
 func _ready():
+	if multiplayer.is_server():
+		var num = randi_range(0, 1)
+		terrain = terrains[num]
+		GameManager.terrNum = num
+		if num == 0:
+			lava.visible = true
+			water.enabled = false
+		else:
+			water.enabled = true
+		print(num)
+		send_terr.rpc(num)
 	multiplayer.peer_disconnected.connect(disconnected)
 	print(GameManager.players.size())
 	$Label.visible = false

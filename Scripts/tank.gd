@@ -18,10 +18,11 @@ var _cur_health := 0
 var direction := Vector2.ZERO
 
 
+
 func on_health_changed(new_value: int):
 	print("💔 Health changed to:", new_value)
 	update_health_bar(new_value)
-	if new_value <= 0 and $MultiplayerSynchronizer.get_multiplayer_authority() != multiplayer.get_unique_id():	
+	if new_value <= 0 and multiplayer and $MultiplayerSynchronizer.get_multiplayer_authority() != multiplayer.get_unique_id():
 		queue_free()
 		
 func _ready():
@@ -36,6 +37,8 @@ func _physics_process(delta):
 		return
 	_handle_controls(delta)
 	move_and_slide()
+	
+	
 	
 func update_health_bar(newVal: int):
 	$HealthBar.value = newVal
