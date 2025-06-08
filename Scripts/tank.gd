@@ -17,30 +17,29 @@ var _cur_health := 0
 
 var direction := Vector2.ZERO
 
+
 func on_health_changed(new_value: int):
 	print("💔 Health changed to:", new_value)
 	update_health_bar(new_value)
-	if new_value <= 0:
+	if new_value <= 0 and $MultiplayerSynchronizer.get_multiplayer_authority() != multiplayer.get_unique_id():	
 		queue_free()
-
+		
 func _ready():
+	$MultiplayerSynchronizer.set_multiplayer_authority(str(name).to_int())
 	cur_health = tank_health
 	_apply_tank()
 	update_health_bar(tank_health)
 	
+	
 func _physics_process(delta):
+	if $MultiplayerSynchronizer.get_multiplayer_authority() != multiplayer.get_unique_id():
+		return
 	_handle_controls(delta)
 	move_and_slide()
 	
 func update_health_bar(newVal: int):
 	$HealthBar.value = newVal
 
-func _on_body_entered(body):
-	if body.is_in_group("bullet"):  # or check body.name.contains("Tank")
-		cur_health -= tank_power
-		cur_health = max(cur_health, 0)
-		if cur_health <= 0:
-			queue_free()
 
 func _handle_controls(delta):
 	# Rotate left/right

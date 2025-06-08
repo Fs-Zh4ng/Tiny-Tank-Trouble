@@ -11,12 +11,18 @@ config_version=5
 [application]
 
 config/name="Tiny Tank Trouble"
-run/main_scene="uid://d2edocxnutjdh"
+run/main_scene="uid://cmi5nlwo4q5u0"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameManager="*res://Scripts/gameManager.gd"
+
 [display]
 
+window/size/initial_position_type=5
+window/size/always_on_top=true
 window/stretch/mode="viewport"
 
 [input]

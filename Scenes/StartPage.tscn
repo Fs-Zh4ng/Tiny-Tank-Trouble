@@ -1,0 +1,135 @@
+[gd_scene load_steps=16 format=4 uid="uid://cmi5nlwo4q5u0"]
+
+[ext_resource type="Script" uid="uid://bnceix46n8ss" path="res://Scripts/start_page.gd" id="1_2hwik"]
+[ext_resource type="Texture2D" uid="uid://dil77kntglcmn" path="res://assets/highland.png" id="1_wk4w2"]
+[ext_resource type="Texture2D" uid="uid://dfcg7r3wi8xct" path="res://Sprites/red_tank.png" id="2_7eu52"]
+[ext_resource type="Texture2D" uid="uid://dvtyvew6rll8r" path="res://Sprites/big_tank.png" id="3_2hwik"]
+[ext_resource type="Texture2D" uid="uid://b0sih4wrlxk7c" path="res://Sprites/sand_tank.png" id="4_c7cdh"]
+[ext_resource type="Texture2D" uid="uid://c8vuvfg1iv7fs" path="res://Sprites/dark_tank.png" id="5_n35kl"]
+[ext_resource type="Texture2D" uid="uid://hiqd66ndcym6" path="res://Sprites/blue_tank.png" id="6_yi056"]
+[ext_resource type="Texture2D" uid="uid://d2ic4s8fsiutx" path="res://Sprites/rouge_tank.png" id="7_m0uhq"]
+[ext_resource type="Texture2D" uid="uid://o2inmaqrgebe" path="res://Sprites/bulletrouge.png" id="8_2sr6o"]
+[ext_resource type="Texture2D" uid="uid://bks07acce15ob" path="res://assets/PNG/Retina/explosion3.png" id="9_ysl6g"]
+[ext_resource type="Texture2D" uid="uid://dmng6hrabsb1i" path="res://assets/PNG/Retina/explosion4.png" id="10_5lqc3"]
+[ext_resource type="Texture2D" uid="uid://d1uvm6ob1rale" path="res://assets/PNG/Retina/explosionSmoke5.png" id="11_n6ikl"]
+
+[sub_resource type="SystemFont" id="SystemFont_aot1s"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_smagc"]
+texture = ExtResource("1_wk4w2")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ivv0u"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_smagc")
+
+[node name="StartPage" type="Node2D"]
+script = ExtResource("1_2hwik")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 314.0
+offset_top = 150.0
+offset_right = 857.0
+offset_bottom = 472.0
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_aot1s")
+theme_override_font_sizes/font_size = 60
+text = "Host Game"
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Join Game"
+
+[node name="Button3" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Random Match
+"
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+z_index = -1
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAARAAEAAAAAAAAAAAARAAIAAAAAAAAAAAARAAMAAAAAAAAAAAARAAQAAAAAAAAAAAARAAUAAAAAAAAAAAARAAYAAAAAAAAAAAARAAcAAAAAAAAAAAARAAgAAAAAAAAAAAARAAkAAAAAAAAAAAAQAAkAAAAAAAAAAAAPAAkAAAAAAAAAAAAOAAkAAAAAAAAAAAANAAkAAAAAAAAAAAAGAAkAAAAAAAAAAAAHAAkAAAAAAAAAAAAIAAkAAAAAAAAAAAAJAAkAAAAAAAAAAAAKAAkAAAAAAAAAAAALAAkAAAAAAAAAAAAMAAkAAAAAAAAAAAAFAAkAAAAAAAAAAAAEAAkAAAAAAAAAAAADAAkAAAAAAAAAAAACAAkAAAAAAAAAAAABAAkAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAACAAIAAAAAAAAAAAABAAIAAAAAAAAAAAABAAMAAAAAAAAAAAACAAMAAAAAAAAAAAADAAIAAAAAAAAAAAABAAQAAAAAAAAAAAABAAUAAAAAAAAAAAAEAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAADAAQAAAAAAAAAAAADAAUAAAAAAAAAAAACAAUAAAAAAAAAAAACAAYAAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAEAAAAAAAAAAAACAAQAAAAAAAAAAAADAAMAAAAAAAAAAAABAAYAAAAAAAAAAAACAAgAAAAAAAAAAAACAAcAAAAAAAAAAAADAAcAAAAAAAAAAAADAAYAAAAAAAAAAAABAAgAAAAAAAAAAAAEAAUAAAAAAAAAAAAEAAQAAAAAAAAAAAAFAAMAAAAAAAAAAAABAAcAAAAAAAAAAAAGAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAAGAAIAAAAAAAAAAAAGAAMAAAAAAAAAAAAFAAQAAAAAAAAAAAAFAAUAAAAAAAAAAAAEAAYAAAAAAAAAAAADAAgAAAAAAAAAAAAEAAcAAAAAAAAAAAAFAAYAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAMAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAIAAAAAAAAAAAAHAAIAAAAAAAAAAAAIAAEAAAAAAAAAAAAJAAEAAAAAAAAAAAAGAAUAAAAAAAAAAAAHAAQAAAAAAAAAAAAJAAIAAAAAAAAAAAAIAAQAAAAAAAAAAAAHAAUAAAAAAAAAAAAGAAYAAAAAAAAAAAAFAAcAAAAAAAAAAAAFAAgAAAAAAAAAAAAJAAMAAAAAAAAAAAAEAAgAAAAAAAAAAAAKAAEAAAAAAAAAAAAGAAgAAAAAAAAAAAAHAAcAAAAAAAAAAAAIAAYAAAAAAAAAAAAIAAUAAAAAAAAAAAAJAAQAAAAAAAAAAAAKAAMAAAAAAAAAAAALAAIAAAAAAAAAAAAGAAcAAAAAAAAAAAAHAAYAAAAAAAAAAAALAAEAAAAAAAAAAAAKAAQAAAAAAAAAAAAJAAUAAAAAAAAAAAAIAAcAAAAAAAAAAAAMAAEAAAAAAAAAAAANAAEAAAAAAAAAAAALAAMAAAAAAAAAAAAKAAIAAAAAAAAAAAAKAAUAAAAAAAAAAAAJAAYAAAAAAAAAAAAJAAcAAAAAAAAAAAAIAAgAAAAAAAAAAAAHAAgAAAAAAAAAAAAMAAIAAAAAAAAAAAALAAQAAAAAAAAAAAAMAAMAAAAAAAAAAAANAAMAAAAAAAAAAAALAAUAAAAAAAAAAAAKAAYAAAAAAAAAAAAJAAgAAAAAAAAAAAAMAAQAAAAAAAAAAAANAAQAAAAAAAAAAAAMAAUAAAAAAAAAAAALAAYAAAAAAAAAAAAKAAcAAAAAAAAAAAANAAIAAAAAAAAAAAAOAAIAAAAAAAAAAAALAAcAAAAAAAAAAAAMAAYAAAAAAAAAAAAOAAQAAAAAAAAAAAAPAAMAAAAAAAAAAAAPAAQAAAAAAAAAAAAOAAUAAAAAAAAAAAANAAUAAAAAAAAAAAAMAAcAAAAAAAAAAAALAAgAAAAAAAAAAAAOAAMAAAAAAAAAAAAPAAIAAAAAAAAAAAAQAAEAAAAAAAAAAAAPAAEAAAAAAAAAAAAOAAEAAAAAAAAAAAANAAYAAAAAAAAAAAAKAAgAAAAAAAAAAAAPAAUAAAAAAAAAAAAOAAYAAAAAAAAAAAANAAcAAAAAAAAAAAANAAgAAAAAAAAAAAAPAAYAAAAAAAAAAAAOAAcAAAAAAAAAAAAMAAgAAAAAAAAAAAAOAAgAAAAAAAAAAAAPAAgAAAAAAAAAAAAQAAgAAAAAAAAAAAAPAAcAAAAAAAAAAAAQAAcAAAAAAAAAAAAQAAYAAAAAAAAAAAAQAAUAAAAAAAAAAAAQAAQAAAAAAAAAAAAQAAMAAAAAAAAAAAAQAAIAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_ivv0u")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(202, 470)
+rotation = -0.866156
+scale = Vector2(0.971154, 1.14423)
+texture = ExtResource("2_7eu52")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(639, 519)
+rotation = -2.63536
+scale = Vector2(0.971154, 1.14423)
+texture = ExtResource("3_2hwik")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(1006, 443)
+rotation = -3.71912
+scale = Vector2(0.971154, 1.14423)
+texture = ExtResource("4_c7cdh")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(410, 81.0001)
+rotation = -1.5997
+scale = Vector2(0.971154, 1.14423)
+texture = ExtResource("5_n35kl")
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+position = Vector2(152, 191)
+rotation = -0.191745
+scale = Vector2(0.971154, 1.14423)
+texture = ExtResource("6_yi056")
+
+[node name="Sprite2D6" type="Sprite2D" parent="."]
+position = Vector2(941, 123)
+rotation = -0.191745
+scale = Vector2(0.971154, 1.14423)
+texture = ExtResource("7_m0uhq")
+
+[node name="Sprite2D7" type="Sprite2D" parent="."]
+position = Vector2(968, 236)
+rotation = 2.92353
+scale = Vector2(2.96118, 3.29859)
+texture = ExtResource("8_2sr6o")
+
+[node name="Sprite2D8" type="Sprite2D" parent="."]
+position = Vector2(373, 529)
+rotation = 2.92353
+scale = Vector2(1.48587, 1.34783)
+texture = ExtResource("9_ysl6g")
+
+[node name="Sprite2D9" type="Sprite2D" parent="."]
+position = Vector2(716, 62)
+rotation = 2.92353
+scale = Vector2(1.48587, 1.34783)
+texture = ExtResource("10_5lqc3")
+
+[node name="Sprite2D10" type="Sprite2D" parent="."]
+position = Vector2(153, 410)
+rotation = 2.92353
+scale = Vector2(1.48587, 1.34783)
+texture = ExtResource("11_n6ikl")
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="on_host_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="on_join_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button3" to="." method="on_random_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bmg1e1fwg2exo"]
+[gd_scene load_steps=9 format=3 uid="uid://bmg1e1fwg2exo"]
 
 [ext_resource type="Script" uid="uid://cnxguce57ycy4" path="res://Scripts/heavy_effect.gd" id="1_o0j10"]
 [ext_resource type="Texture2D" uid="uid://bycqat10t83g" path="res://assets/PNG/Retina/explosion2.png" id="2_55imu"]
@@ -30,11 +30,16 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_o0j10"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
 [node name="HeavyEffect" type="Node2D"]
 script = ExtResource("1_o0j10")
 
 [node name="Explosion" type="AnimatedSprite2D" parent="."]
-scale = Vector2(1.1725, 1.1398)
+scale = Vector2(1.81514, 1.85153)
 sprite_frames = SubResource("SpriteFrames_3300m")
 animation = &"explode"
 
@@ -42,5 +47,8 @@ animation = &"explode"
 wait_time = 2.0
 one_shot = true
 autostart = true
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_o0j10")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

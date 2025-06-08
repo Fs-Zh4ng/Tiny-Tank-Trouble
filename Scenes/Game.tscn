@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://bty7redukx820"]
+[gd_scene load_steps=7 format=3 uid="uid://bty7redukx820"]
 
 [ext_resource type="Script" uid="uid://du2da3ej6le5n" path="res://Scripts/game.gd" id="1_iukft"]
-[ext_resource type="Texture2D" uid="uid://b2ncm143ardoj" path="res://assets/PNG/Retina/barrelBlack_side.png" id="2_gl6un"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_iukft"]
 
@@ -18,14 +17,43 @@ normal = Vector2(1, 0)
 normal = Vector2(-1, 0)
 distance = -0.820173
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_j5yw3"]
-size = Vector2(36.7572, 52.216)
-
 [node name="Game" type="Node2D"]
 script = ExtResource("1_iukft")
 
+[node name="Label" type="Label" parent="."]
+visible = false
+top_level = true
+z_index = 1
+offset_left = 2.0
+offset_top = 378.0
+offset_right = 2303.0
+offset_bottom = 791.0
+theme_override_font_sizes/font_size = 150
+text = "You Died"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+visible = false
+z_index = 1
+offset_left = 895.0
+offset_top = 600.0
+offset_right = 1540.0
+offset_bottom = 691.0
+theme_override_font_sizes/font_size = 40
+text = "Please wait for the game to finish"
+
+[node name="Button" type="Button" parent="."]
+visible = false
+z_index = 1
+offset_left = 1162.0
+offset_top = 599.0
+offset_right = 1302.0
+offset_bottom = 662.0
+theme_override_font_sizes/font_size = 40
+text = "Return"
+
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(1159, 644)
+position = Vector2(1152, 648)
 zoom = Vector2(0.5, 0.5)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -45,27 +73,31 @@ position = Vector2(490, 15)
 shape = SubResource("WorldBoundaryShape2D_iukft")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="."]
-position = Vector2(9, 13)
+position = Vector2(-3, 14)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
 position = Vector2(3, 274)
 shape = SubResource("WorldBoundaryShape2D_j5yw3")
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="."]
-position = Vector2(1155, 442)
+position = Vector2(1151, 442)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
 position = Vector2(1155, 174)
 shape = SubResource("WorldBoundaryShape2D_kldst")
 
-[node name="Test" type="CharacterBody2D" parent="."]
-position = Vector2(199, 210)
-scale = Vector2(5.27788, 5.30489)
+[node name="Spawn" type="Node2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Test"]
-position = Vector2(-0.18947, -0.377007)
-scale = Vector2(1, 1)
-shape = SubResource("RectangleShape2D_j5yw3")
+[node name="0" type="Node2D" parent="Spawn" groups=["PlayerSpawnPoint"]]
+position = Vector2(123, 85)
 
-[node name="Sprite2D" type="Sprite2D" parent="Test"]
-texture = ExtResource("2_gl6un")
+[node name="1" type="Node2D" parent="Spawn" groups=["PlayerSpawnPoint"]]
+position = Vector2(1933, 960)
+
+[node name="2" type="Node2D" parent="Spawn" groups=["PlayerSpawnPoint"]]
+position = Vector2(2086, 314)
+
+[node name="3" type="Node2D" parent="Spawn" groups=["PlayerSpawnPoint"]]
+position = Vector2(208, 972)
+
+[connection signal="pressed" from="Button" to="." method="return_home"]

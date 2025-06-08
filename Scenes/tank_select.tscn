@@ -15,14 +15,17 @@ anchors_preset = 0
 script = ExtResource("1_r503u")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 447.0
+layout_mode = 0
+offset_left = -7.0
 offset_top = 145.0
-offset_right = 684.0
+offset_right = 1144.0
 offset_bottom = 196.0
 theme_override_font_sizes/font_size = 37
 text = "Select A Tank"
+horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
 offset_left = 148.0
 offset_top = 261.0
 offset_right = 1024.0
